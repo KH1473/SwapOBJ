@@ -6,7 +6,7 @@ using UnityEngine;
 public class SwitchObj : MonoBehaviour
 {
     //クリック数をカウントする
-    int clickcnt=0;
+    int clickcnt = 0;
     //オブジェクトの位置を管理する配列
     //[SerializeField] Transform[] trans;
     //他から呼び出せるようにするためのインスタンス
@@ -27,7 +27,7 @@ public class SwitchObj : MonoBehaviour
 
     private void Update()
     {
-       
+
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -51,20 +51,20 @@ public class SwitchObj : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                
-                if ( Input.GetMouseButtonDown(0))
+
+                if (Input.GetMouseButtonDown(0))
                 {
                     gameObject2 = hit.collider.gameObject;
 
                     //trans[1] = hit.collider.transform;
                     //secondObject.transform.position = hit.collider.transform.position;
                     //Debug.Log(hit.collider.transform.position);
-                  
+
                     // 配列の位置を交換する
                     //SwapArray();
                     Debug.Log(gameObject2.name);
-                    
-                    
+
+
                 }
             }
             if (gameObject1 != null && gameObject2 != null)
@@ -76,17 +76,22 @@ public class SwitchObj : MonoBehaviour
                     {
                         SwapObj(gameObject1, gameObject2);
                         clickcnt = 0;
+                        Debug.Log("change");
                     }
                 }
                 else
                 {
                     clickcnt = 0;
+                    gameObject1 = null;
+                    gameObject2 = null;
+                    Debug.Log("No change& null");
                 }
             }
+            
         }
-       // Debug.Log(clickcnt);
-       
-      
+        // Debug.Log(clickcnt);
+
+
     }
 
 
@@ -136,5 +141,15 @@ public class SwitchObj : MonoBehaviour
     //    var tmp = input[index1];
     //    input[index1] = input[index2];
     //    input[index2] = tmp;
+    //}
+
+
+    // リセットボタンが押されたら、位置を初期位置に戻す
+    //public void ResetPositions()
+    //{
+    //    gameObject1 = null;
+    //    gameObject2 = null;
+
+    //    Debug.Log("delete");
     //}
 }
