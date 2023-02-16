@@ -75,7 +75,16 @@ public class MoveControl : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -0.3f);
         }
 
-        if (rb.transform.position.y < -5.0f)
+        //リスタート
+        //if (rb.transform.position.y < -5.0f)
+        //{
+        //    rb.transform.position = new Vector3(1.44f, 2.0f, -3.05f);
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "GameOverArea")
         {
             rb.transform.position = new Vector3(1.44f, 2.0f, -3.05f);
         }
