@@ -43,7 +43,7 @@ public class SwitchObj : MonoBehaviour
                     //firstObject.transform.position = hit.collider.transform.position;
                     //Debug.Log(hit.collider.transform.position);
                     clickcnt++;
-                    Debug.Log(gameObject1.name);
+                    Debug.Log(gameObject1.name + " obj1");
                 }
             }
         }
@@ -62,7 +62,7 @@ public class SwitchObj : MonoBehaviour
 
                     // ”z—ñ‚ÌˆÊ’u‚ðŒðŠ·‚·‚é
                     //SwapArray();
-                    Debug.Log(gameObject2.name);
+                    Debug.Log(gameObject2.name + " obj2");
 
 
                 }

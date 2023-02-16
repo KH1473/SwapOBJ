@@ -9,6 +9,7 @@ public class MoveControl : MonoBehaviour
     private Rigidbody rb;
     private Vector3 moveForward;
     public float moveSpeed;
+    private float velocityMax = 3.0f;
 
     public new GameObject camera;
 
@@ -51,12 +52,12 @@ public class MoveControl : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(moveForward, transform.up);
         }
 
-        if (rb.velocity.x > 0.3f)
+        if (rb.velocity.x > velocityMax)
         {
             rb.velocity = new Vector3(0.3f, rb.velocity.y, rb.velocity.z);
         }
 
-        if(rb.velocity.x<-0.3f)
+        if(rb.velocity.x < -velocityMax)
         {
             rb.velocity = new Vector3(-0.3f, rb.velocity.y, rb.velocity.z);
         }
@@ -65,13 +66,18 @@ public class MoveControl : MonoBehaviour
         //    rb.velocity = new Vector3(rb.velocity.x, 0.3f, rb.velocity.z);
         //}
 
-        if (rb.velocity.z > 0.3f)
+        if (rb.velocity.z > velocityMax)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0.3f);
         }
-        if (rb.velocity.z < -0.3f)
+        if (rb.velocity.z < -velocityMax)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -0.3f);
+        }
+
+        if (rb.transform.position.y < -5.0f)
+        {
+            rb.transform.position = new Vector3(1.44f, 2.0f, -3.05f);
         }
     }
 
