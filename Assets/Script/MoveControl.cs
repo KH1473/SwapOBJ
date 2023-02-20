@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveControl : MonoBehaviour
 {
     //public Animator animator;
-
     private Rigidbody rb;
     private Vector3 moveForward;
     public float moveSpeed;
@@ -21,6 +21,8 @@ public class MoveControl : MonoBehaviour
 
     //[SerializeField]
     //private GameObject parentObj_;
+    private bool Grounded;//  地面に着地しているか判定する変数
+    private float Jumppower;//  ジャンプ力
 
     private void FixedUpdate()
     {
@@ -29,6 +31,7 @@ public class MoveControl : MonoBehaviour
 
     void Start()
     {
+        Jumppower = 10.0f;
         rb = GetComponent<Rigidbody>();
         //Debug.Assert(parentObj != null);
         //Debug.Assert(parentObj_ != null);
@@ -57,7 +60,7 @@ public class MoveControl : MonoBehaviour
             rb.velocity = new Vector3(0.3f, rb.velocity.y, rb.velocity.z);
         }
 
-        if(rb.velocity.x < -velocityMax)
+        if (rb.velocity.x < -velocityMax)
         {
             rb.velocity = new Vector3(-0.3f, rb.velocity.y, rb.velocity.z);
         }
@@ -75,20 +78,44 @@ public class MoveControl : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -0.3f);
         }
 
-        //リスタート
-        //if (rb.transform.position.y < -5.0f)
-        //{
-        //    rb.transform.position = new Vector3(1.44f, 2.0f, -3.05f);
-        //}
+        if (Grounded == true)//  もし、Groundedがtrueなら、
+        {
+            if (Input.GetKeyDown(KeyCode.Space))//  もし、スペースキーがおされたなら、  
+            {
+                //animator.SetTrigger("Jump");
+                Grounded = false;//  Groundedをfalseにする
+                                 //animator.SetBool("Grounded", false);
+                rb.AddForce(Vector3.up * Jumppower, ForceMode.Impulse);//  上にJumpPower分力をかける
+
+
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "GameOverArea")
+        if (other.gameObject.name == "GameOverArea")
         {
-            rb.transform.position = new Vector3(1.44f, 2.0f, -3.05f);
+            //rb.transform.position = new Vector3(1.44f, 2.0f, -3.05f);
+            SceneManager.LoadScene("SampleScene");
         }
     }
+
+    void OnCollisionEnter(Collision other)//  地面に触れた時の処理
+    {
+        if (other.gameObject.tag == "Ground")//  もしGroundというタグがついたオブジェクトに触れたら、
+        {
+            Grounded = true;//  Groundedをtrueにする
+            //animator.SetBool("Grounded", true);
+        }
+    }
+
+    //public void ChangeControl(bool controlFlag)
+    //{
+    //    control = controlFlag;
+    //    //animator.SetFloat("Speed", 0f);
+    //}
 
     //private void OnCollisionEnter(Collision collision)
     //{

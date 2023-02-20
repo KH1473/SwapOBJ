@@ -27,8 +27,6 @@ public class SwitchObj : MonoBehaviour
 
     private void Update()
     {
-
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -51,7 +49,6 @@ public class SwitchObj : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-
                 if (Input.GetMouseButtonDown(0))
                 {
                     gameObject2 = hit.collider.gameObject;
@@ -63,8 +60,6 @@ public class SwitchObj : MonoBehaviour
                     // 配列の位置を交換する
                     //SwapArray();
                     Debug.Log(gameObject2.name + " obj2");
-
-
                 }
             }
             if (gameObject1 != null && gameObject2 != null)
@@ -87,14 +82,9 @@ public class SwitchObj : MonoBehaviour
                     Debug.Log("No change& null");
                 }
             }
-            
         }
         // Debug.Log(clickcnt);
-
-
     }
-
-
     //public void OnclickBook(Book.COLOR color,Transform transform)
     //{
     //    //クリックされたらオブジェクトの位置を保存
