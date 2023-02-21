@@ -31,7 +31,7 @@ public class MoveControl : MonoBehaviour
 
     void Start()
     {
-        Jumppower = 10.0f;
+        Jumppower = 0.0f;
         rb = GetComponent<Rigidbody>();
         //Debug.Assert(parentObj != null);
         //Debug.Assert(parentObj_ != null);
@@ -105,6 +105,11 @@ public class MoveControl : MonoBehaviour
     void OnCollisionEnter(Collision other)//  地面に触れた時の処理
     {
         if (other.gameObject.tag == "Ground")//  もしGroundというタグがついたオブジェクトに触れたら、
+        {
+            Grounded = true;//  Groundedをtrueにする
+            //animator.SetBool("Grounded", true);
+        }
+        if (other.gameObject.tag == "Cube")//  もしGroundというタグがついたオブジェクトに触れたら、
         {
             Grounded = true;//  Groundedをtrueにする
             //animator.SetBool("Grounded", true);
