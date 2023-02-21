@@ -41,7 +41,7 @@ public class SwitchObj : MonoBehaviour
                     //firstObject.transform.position = hit.collider.transform.position;
                     //Debug.Log(hit.collider.transform.position);
                     clickcnt++;
-                    Debug.Log(gameObject1.name + " obj1");
+                    //Debug.Log(gameObject1.name + " obj1");
                 }
             }
         }
@@ -59,7 +59,7 @@ public class SwitchObj : MonoBehaviour
 
                     // ”z—ñ‚ÌˆÊ’u‚ðŒðŠ·‚·‚é
                     //SwapArray();
-                    Debug.Log(gameObject2.name + " obj2");
+                    //Debug.Log(gameObject2.name + " obj2");
                 }
             }
             if (gameObject1 != null && gameObject2 != null)
@@ -71,7 +71,7 @@ public class SwitchObj : MonoBehaviour
                     {
                         SwapObj(gameObject1, gameObject2);
                         clickcnt = 0;
-                        Debug.Log("change");
+                        //Debug.Log("change");
                     }
                 }
                 else
@@ -79,7 +79,7 @@ public class SwitchObj : MonoBehaviour
                     clickcnt = 0;
                     gameObject1 = null;
                     gameObject2 = null;
-                    Debug.Log("No change& null");
+                    //Debug.Log("No change& null");
                 }
             }
         }
