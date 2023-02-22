@@ -28,5 +28,27 @@ public class ObjDestroy : MonoBehaviour
             //Destroy
             Destroy(this.gameObject);
         }
+
+        
+       
     }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log("No Hit");
+        
+        if (collision.gameObject.CompareTag("Bullet") && gameObject.CompareTag("Enemy"))
+        {
+
+            // 0.2ïbå„Ç…Enemyè¡Ç¶ÇÈ
+            Destroy(gameObject, 0.2f);
+
+            //íeè¡Ç¶ÇÈ
+            Destroy(collision.gameObject);
+
+            //Debug.Log("Hit");
+        }
+    }
+
 }

@@ -42,10 +42,17 @@ public class camera_Tracking : MonoBehaviour
         //Vector3 newAngle = Vector3.zero;
         //newAngle.x = rotationSpeed.x * nowMouseValue.x;
         //newAngle.y = rotationSpeed.y * nowMouseValue.y;
+        // Updated upstream
 
         //transform.RotateAround(playerObject.transform.position, Vector3.up, newAngle.x);
         //transform.RotateAround(playerObject.transform.position, transform.right, -newAngle.y);
        
+
+
+        //transform.RotateAround(playerObject.transform.position, Vector3.up, newAngle.x);
+        //transform.RotateAround(playerObject.transform.position, transform.right, -newAngle.y);
+
+
     }
 
     //拡大縮小
