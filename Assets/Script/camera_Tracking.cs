@@ -6,7 +6,7 @@ public class camera_Tracking : MonoBehaviour
 {
 
     public GameObject playerObject;                     //追尾 オブジェクト
-    public Vector2 rotationSpeed = new Vector2(3, 3);    //回転速度
+    //public Vector2 rotationSpeed = new Vector2(3, 3);    //回転速度
     private Vector2 lastMousePosition;                  //最後のマウス座標
     private Vector3 lastTargetPosition;                 //最後の追尾オブジェクトの座標
 
@@ -35,16 +35,16 @@ public class camera_Tracking : MonoBehaviour
         transform.position += playerObject.transform.position - lastTargetPosition;
         lastTargetPosition = playerObject.transform.position;
 
-        Vector2 nowMouseValue;
-        nowMouseValue.x = Input.GetAxisRaw("Mouse X");
-        nowMouseValue.y = Input.GetAxisRaw("Mouse Y");
+        //Vector2 nowMouseValue;
+        //nowMouseValue.x = Input.GetAxisRaw("Mouse X");
+        //nowMouseValue.y = Input.GetAxisRaw("Mouse Y");
 
-        Vector3 newAngle = Vector3.zero;
-        newAngle.x = rotationSpeed.x * nowMouseValue.x;
-        newAngle.y = rotationSpeed.y * nowMouseValue.y;
+        //Vector3 newAngle = Vector3.zero;
+        //newAngle.x = rotationSpeed.x * nowMouseValue.x;
+        //newAngle.y = rotationSpeed.y * nowMouseValue.y;
 
-        transform.RotateAround(playerObject.transform.position, Vector3.up, newAngle.x);
-        transform.RotateAround(playerObject.transform.position, transform.right, -newAngle.y);
+        //transform.RotateAround(playerObject.transform.position, Vector3.up, newAngle.x);
+        //transform.RotateAround(playerObject.transform.position, transform.right, -newAngle.y);
        
     }
 

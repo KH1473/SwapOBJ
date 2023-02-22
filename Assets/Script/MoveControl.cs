@@ -26,7 +26,7 @@ public class MoveControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(moveForward.normalized * moveSpeed,ForceMode.Impulse);
+        rb.AddForce(moveForward.normalized * moveSpeed, ForceMode.Impulse);
     }
 
     void Start()
@@ -42,11 +42,11 @@ public class MoveControl : MonoBehaviour
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-        moveForward = (cameraForward * inputVertical) + (Camera.main.transform.right * inputHorizontal);
+        //Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+        //moveForward = (cameraForward * inputVertical) + (Camera.main.transform.right * inputHorizontal);
+        moveForward = new Vector3(inputHorizontal, 0, inputVertical);
 
         //moveForward = (cameraForward * inputVertical) + (camera.transform.right * inputHorizontal);
-        //rb.velocity = moveForward * moveSpeed;
 
         //animator.SetFloat("Speed", Mathf.Abs(moveForward.z));
 
@@ -54,6 +54,7 @@ public class MoveControl : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(moveForward, transform.up);
         }
+
 
         if (rb.velocity.x > velocityMax)
         {
@@ -64,6 +65,7 @@ public class MoveControl : MonoBehaviour
         {
             rb.velocity = new Vector3(-0.3f, rb.velocity.y, rb.velocity.z);
         }
+
         //if (rb.velocity.y > 0.3f)
         //{
         //    rb.velocity = new Vector3(rb.velocity.x, 0.3f, rb.velocity.z);
@@ -91,6 +93,7 @@ public class MoveControl : MonoBehaviour
             }
         }
 
+        //rb.velocity = moveForward.normalized;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -115,6 +118,8 @@ public class MoveControl : MonoBehaviour
             //animator.SetBool("Grounded", true);
         }
     }
+
+   
 
     //public void ChangeControl(bool controlFlag)
     //{
